@@ -1,15 +1,33 @@
 -- ================================================================================================
--- TITLE : melange-nvim
--- ABOUT : A subtle, warm colorscheme for Neovim inspired by Sublime Text's Melange theme.
--- LINKS :
---   > github : https://github.com/savq/melange-nvim
+-- TITLE : kanagawa
+-- -- LINKS :
+--   > github : https://github.com/rebelot/kanagawa.nvim/
 -- ================================================================================================
 
-return {
-	"savq/melange-nvim",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		vim.cmd("colorscheme melange")
-	end,
-}
+return  {
+    'rebelot/kanagawa.nvim',
+    lazy = false,        -- Load immediately
+    priority = 1000,     -- Load early
+    config = function()
+      require('kanagawa').setup({
+        -- Optional configuration
+        transparent = false,
+        terminalColors = true,
+        colors = {
+          palette = {
+            -- Custom palette adjustments
+            sumiInk0 = "#16161D",
+          }
+        },
+        overrides = function(colors)
+          return {
+            -- Custom highlights
+            NormalFloat = { bg = colors.theme.ui.bg_p1 },
+            FloatBorder = { bg = colors.theme.ui.bg_p1, fg = colors.theme.ui.border },
+          }
+        end,
+      })
+      -- Apply colorscheme
+      vim.cmd.colorscheme('kanagawa-wave')
+    end,
+  }
