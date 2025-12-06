@@ -12,6 +12,20 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{ "mason-org/mason.nvim", opts = {} }, -- LSP/DAP/Linter installer & manager
+
+		-- Auto-install external tools (via Mason)
+		{
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			opts = {
+				ensure_installed = {
+					"pyrefly", -- Python type checker / LSP
+					"ruff",    -- Python linter/formatter
+				},
+				run_on_start = true, -- install/upgrade on startup
+				-- you can also set start_delay = 3000 (ms) if you want to delay
+			},
+		},
+
 		"creativenull/efmls-configs-nvim", -- Preconfigured EFM Language Server setups
 		"hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for LSP-based completion
 	},
