@@ -20,6 +20,7 @@ return {
 				ensure_installed = {
 					"pyrefly", -- Python type checker / LSP
 					"ruff",    -- Python linter/formatter
+          "efm",
 				},
 				run_on_start = true, -- install/upgrade on startup
 				-- you can also set start_delay = 3000 (ms) if you want to delay
